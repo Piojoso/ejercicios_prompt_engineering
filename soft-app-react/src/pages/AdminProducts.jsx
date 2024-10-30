@@ -5,7 +5,8 @@ import {
   updateProduct,
   deleteProduct,
 } from "../services/products";
-
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 import "../styles/AdminProducts.css";
 
 const AdminProducts = () => {
@@ -94,9 +95,23 @@ const AdminProducts = () => {
     setFilteredProducts(data);
   };
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      window.location.href = "/login"; // Redirige al login después de cerrar sesión
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
+
   return (
     <div>
-      <h1>Administrar Productos</h1>
+      <button onClick={handleLogout} className="btn-logout">
+        Cerrar sesión
+      </button>
+      <div className="">
+        <h1 className="title">Administrar Productos</h1>
+      </div>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

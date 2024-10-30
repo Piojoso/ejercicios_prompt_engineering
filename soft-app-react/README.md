@@ -1,6 +1,8 @@
 src/
 │
 ├── assets/ # Archivos estáticos (imágenes, íconos, etc.)
+├── config/ # Archivos de configuraciones
+│ └── firebase.js # Configuración para conectarse a firebase.js
 ├── components/ # Componentes reutilizables
 │ ├── ProductCard.jsx # Componente para renderizar cada producto
 │ └── ContactForm.jsx # Componente para el formulario de contacto
