@@ -10,6 +10,7 @@ const ProductCard = ({ product }) => {
       <div className="product-info">
         <h2 className="product-name">{product.name}</h2>
         <p className="product-description">{product.description}</p>
+        <p className="product-category">Categoría: {product.category}</p>
         <p className="product-price">Precio: ${product.price}</p>
       </div>
     </div>

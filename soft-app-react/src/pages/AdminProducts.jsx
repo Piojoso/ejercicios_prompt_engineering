@@ -11,18 +11,30 @@ import "../styles/AdminProducts.css";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
+
+  const categories = [
+    "Electrónica",
+    "Ropa y accesorios",
+    "Hogar y cocina",
+    "Deportes y fitness",
+    "Juguetes y juegos",
+    "Libros y música",
+    "Otros",
+  ];
+
   const [form, setForm] = useState({
     name: "",
     description: "",
     price: "",
     imageUrl: "",
-  }); // Añadido 'imageUrl'
+    category: "", // Add the category property
+  });
+
   const [editingId, setEditingId] = useState(null);
 
   useEffect(() => {
     const getProducts = async () => {
       const data = await fetchProducts();
-      console.log(data, "aca");
       setProducts(data);
     };
     getProducts();
@@ -40,7 +52,13 @@ const AdminProducts = () => {
     } else {
       await addProduct(form);
     }
-    setForm({ name: "", description: "", price: "", imageUrl: "" }); // Reseteo del campo 'imageUrl'
+    setForm({
+      name: "",
+      description: "",
+      price: "",
+      imageUrl: "",
+      category: "", // Add the category property
+    });
     setEditingId(null);
     // Fetch products again
     const data = await fetchProducts();
@@ -91,6 +109,19 @@ const AdminProducts = () => {
           placeholder="Precio del producto"
           required
         />
+        <select
+          name="category"
+          value={form.category}
+          onChange={handleChange}
+          className="form-input"
+        >
+          <option value="">Seleccione una categoría</option>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
         <input
           type="text"
           name="imageUrl"
@@ -112,6 +143,7 @@ const AdminProducts = () => {
             <div className="product-info">
               <h2 className="product-name">{product.name}</h2>
               <p className="product-description">{product.description}</p>
+              <p className="product-category">Categoría: {product.category}</p>
               <p className="product-price">Precio: ${product.price}</p>
             </div>
             <div className="product-actions">

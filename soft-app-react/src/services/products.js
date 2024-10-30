@@ -17,12 +17,19 @@ export const fetchProducts = async () => {
 };
 
 export const addProduct = async (product) => {
-  await addDoc(productsCollection, product);
+  const newProduct = {
+    ...product,
+    category: product.category, // Add the category property
+  };
+  await addDoc(productsCollection, newProduct);
 };
 
-export const updateProduct = async (id, updatedProduct) => {
-  const productDoc = doc(db, "products", id);
-  await updateDoc(productDoc, updatedProduct);
+export const updateProduct = async (id, product) => {
+  const updatedProduct = {
+    ...product,
+    category: product.category, // Add the category property
+  };
+  await updateDoc(doc(productsCollection, id), updatedProduct);
 };
 
 export const deleteProduct = async (id) => {
