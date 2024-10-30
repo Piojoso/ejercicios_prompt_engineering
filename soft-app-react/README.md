@@ -1,3 +1,4 @@
+```
 src/
 │
 ├── assets/ # Archivos estáticos (imágenes, íconos, etc.)
@@ -18,3 +19,8 @@ src/
 ├── main.jsx # Punto de entrada de la aplicación
 └── styles/ # Archivos CSS o SCSS
 └── main.css # Estilos globales
+```
+
+Adjunto link del chat para utilizado para realizar estos cambios.
+
+[Chat](https://chatgpt.com/share/67226b97-47fc-8007-a082-04b83ccc0002)
