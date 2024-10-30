@@ -1,0 +1,13 @@
+version: '3'
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"  # Mapea el puerto 5173 (default de vite) en localhost al puerto 5173 del contenedor
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
