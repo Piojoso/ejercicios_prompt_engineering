@@ -1,4 +1,3 @@
-// src/pages/AdminProducts.jsx
 import { useEffect, useState } from "react";
 import {
   fetchProducts,
@@ -11,6 +10,8 @@ import "../styles/AdminProducts.css";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const categories = [
     "Electrónica",
@@ -27,7 +28,7 @@ const AdminProducts = () => {
     description: "",
     price: "",
     imageUrl: "",
-    category: "", // Add the category property
+    category: "",
   });
 
   const [editingId, setEditingId] = useState(null);
@@ -36,6 +37,7 @@ const AdminProducts = () => {
     const getProducts = async () => {
       const data = await fetchProducts();
       setProducts(data);
+      setFilteredProducts(data);
     };
     getProducts();
   }, []);
@@ -43,6 +45,16 @@ const AdminProducts = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+  };
+
+  const handleCategoryFilter = (e) => {
+    const category = e.target.value;
+    setSelectedCategory(category);
+    if (category === "") {
+      setFilteredProducts(products);
+    } else {
+      setFilteredProducts(products.filter((p) => p.category === category));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -57,12 +69,12 @@ const AdminProducts = () => {
       description: "",
       price: "",
       imageUrl: "",
-      category: "", // Add the category property
+      category: "",
     });
     setEditingId(null);
-    // Fetch products again
     const data = await fetchProducts();
     setProducts(data);
+    setFilteredProducts(data);
   };
 
   const handleEdit = (product) => {
@@ -70,7 +82,7 @@ const AdminProducts = () => {
       name: product.name,
       description: product.description,
       price: product.price,
-      imageUrl: product.imageUrl || "", // Asegúrate de manejar la imagen
+      imageUrl: product.imageUrl || "",
     });
     setEditingId(product.id);
   };
@@ -79,6 +91,7 @@ const AdminProducts = () => {
     await deleteProduct(id);
     const data = await fetchProducts();
     setProducts(data);
+    setFilteredProducts(data);
   };
 
   return (
@@ -128,12 +141,26 @@ const AdminProducts = () => {
           value={form.imageUrl}
           onChange={handleChange}
           placeholder="URL de la imagen"
-          required // Campo requerido
+          required
         />
         <button type="submit">{editingId ? "Actualizar" : "Agregar"}</button>
       </form>
+
+      <select
+        value={selectedCategory}
+        onChange={handleCategoryFilter}
+        className="form-input category-filter"
+      >
+        <option value="">Todas las categorías</option>
+        {categories.map((category) => (
+          <option key={category} value={category}>
+            {category}
+          </option>
+        ))}
+      </select>
+
       <div className="product-list">
-        {products.map((product) => (
+        {filteredProducts.map((product) => (
           <div key={product.id} className="product-card">
             <div className="product-image">
               {product.imageUrl && (
