@@ -1,12 +1,9 @@
 // Home.jsx
-import { useAuth } from '../context/AuthContext';
 import { handleLogout } from '../utils/auth.js';
-import { Link } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader.jsx';
 import { useProductsCache } from '../context/ProductsCacheContext';
 
 const Home = () => {
-  const { currentUser } = useAuth();
   const { products, loading } = useProductsCache();
 
   const logout = async () => {
@@ -22,11 +19,6 @@ const Home = () => {
     <div className="container is-flex is-flex-direction-column is-justify-content-space-between" style={{ minHeight: '100vh' }}>
       <header className="my-5 has-text-centered">
         <h1 className="title">Recipe Manager</h1>
-        {currentUser ? (
-          <button className="button is-danger" onClick={logout}>Logout</button>
-        ) : (
-          <Link to="/login" className="button is-primary">Login</Link>
-        )}
       </header>
 
       <p className="subtitle has-text-centered mb-5">Your personal recipe book. Add, search, and manage all your favorite recipes!</p>

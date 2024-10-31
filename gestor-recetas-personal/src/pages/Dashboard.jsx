@@ -1,27 +1,14 @@
 // Dashboard.jsx
 import { useState } from 'react';
-import { useAuth } from '../context/AuthContext';
-import { handleLogout } from '../utils/auth.js';
 import { addProduct, updateProduct, deleteProduct } from '../utils/store.js';
-import { Link } from 'react-router-dom';
 import { Loader } from '../components/Loader/Loader.jsx';
 import { useProductsCache } from '../context/ProductsCacheContext';
 
 const Dashboard = () => {
-    const { currentUser } = useAuth();
     const { products, loading, updateProductsCache } = useProductsCache();
     const [form, setForm] = useState({ title: '', description: '', image: '' });
     const [editing, setEditing] = useState(false);
     const [editingId, setEditingId] = useState(null);
-
-    const logout = async () => {
-        const result = await handleLogout();
-        if (result.success) {
-            console.log('Logout successful');
-        } else {
-            console.error('Error signing out:', result.message);
-        }
-    };
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -64,11 +51,6 @@ const Dashboard = () => {
         <div className="container" style={{ minHeight: '100vh' }}>
             <header className="my-5 has-text-centered">
                 <h1 className="title">Recipe Manager - Dashboard</h1>
-                {currentUser ? (
-                    <button className="button is-danger" onClick={logout}>Logout</button>
-                ) : (
-                    <Link to="/login" className="button is-primary">Login</Link>
-                )}
             </header>
 
             <form onSubmit={handleSubmit} className="mb-5">

@@ -23,10 +23,10 @@ const App = () => {
 
   return (
     <div data-theme={theme}>
-      <Header toggleTheme={toggleTheme} />
-      <ProductsCacheProvider>
-        <AuthProvider>
-          <Router>
+      <AuthProvider>
+        <Router>
+          <Header toggleTheme={toggleTheme} />
+          <ProductsCacheProvider>
             <Routes>
               {/* Rutas públicas */}
               <Route path="/" element={<Home />} />
@@ -40,9 +40,9 @@ const App = () => {
                 </PrivateRoute>
               } />
             </Routes>
-          </Router>
-        </AuthProvider>
-      </ProductsCacheProvider>
+          </ProductsCacheProvider>
+        </Router>
+      </AuthProvider>
     </div>
   );
 };
