@@ -1,0 +1,62 @@
+{
+  "header": {
+    "title": "Gestor de Recetas",
+    "button": {
+      "login": "Login",
+      "logout": "Logout"
+    }
+  },
+  "home": {
+    "title": "Gestor de Recetas",
+    "subtitle": "Tu libro de recetas personal. ¡Agrega, busca y administra todas tus recetas favoritas!",
+    "searchPlaceholder": "Buscar recetas por nombre...",
+    "searchButton": "Buscar",
+    "loadingMessage": "Cargando...",
+    "productTitle": "{{title}}",
+    "productDescription": "{{description}}",
+    "logoutSuccess": "Cierre de sesión exitoso",
+    "logoutError": "Error al cerrar sesión: {{message}}",
+    "footer": "© 2024 Gestor de Recetas. Todos los derechos reservados."
+  },
+  "dashboard": {
+    "title": "Gestor de Recetas - Panel",
+    "form": {
+      "titleLabel": "Título",
+      "descriptionLabel": "Descripción",
+      "imageLabel": "URL de la imagen",
+      "submitButtonAdd": "Agregar producto",
+      "submitButtonUpdate": "Actualizar producto"
+    },
+    "product": {
+      "editButton": "Editar",
+      "deleteButton": "Eliminar"
+    },
+    "loadingMessage": "Cargando productos..."
+  },
+  "login": {
+    "welcome": "¡Bienvenido, {{name}}!",
+    "question": "¿Te gustaría ir al panel o cerrar sesión?",
+    "goToDashboard": "Ir al panel",
+    "logout": "Cerrar sesión",
+    "title": "Iniciar sesión",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "loginWithEmailButton": "Iniciar sesión con correo",
+    "loginWithGoogleButton": "Iniciar sesión con Google",
+    "orText": "o",
+    "registerLink": "Regístrate con correo",
+    "errorMessage": "Error al iniciar sesión: {{message}}",
+    "errorMessageGoogle": "Error al iniciar sesión con Google: {{message}}"
+  },
+  "register": {
+    "welcome": "¡Bienvenido, {{name}}!",
+    "alreadyRegistered": "Ya estás registrado. Puedes ir a tu panel.",
+    "goToDashboard": "Ir al panel",
+    "title": "Registrarse",
+    "emailPlaceholder": "Correo electrónico",
+    "passwordPlaceholder": "Contraseña",
+    "registerButton": "Registrarse",
+    "loginLink": "¿Ya tienes una cuenta? Iniciar sesión",
+    "errorMessage": "Error al registrarse: {{message}}"
+  }
+}

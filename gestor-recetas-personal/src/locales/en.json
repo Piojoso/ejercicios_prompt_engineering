@@ -1,0 +1,62 @@
+{
+  "header": {
+    "title": "Recipe Manager",
+    "button": {
+      "login": "Login",
+      "logout": "Logout"
+    }
+  },
+  "home": {
+    "title": "Recipe Manager",
+    "subtitle": "Your personal recipe book. Add, search, and manage all your favorite recipes!",
+    "searchPlaceholder": "Search recipes by name...",
+    "searchButton": "Search",
+    "loadingMessage": "Loading...",
+    "productTitle": "{{title}}",
+    "productDescription": "{{description}}",
+    "logoutSuccess": "Logout successful",
+    "logoutError": "Error signing out: {{message}}",
+    "footer": "© 2024 Recipe Manager. All Rights Reserved."
+  },
+  "dashboard": {
+    "title": "Recipe Manager - Dashboard",
+    "form": {
+      "titleLabel": "Title",
+      "descriptionLabel": "Description",
+      "imageLabel": "Image URL",
+      "submitButtonAdd": "Add Product",
+      "submitButtonUpdate": "Update Product"
+    },
+    "product": {
+      "editButton": "Edit",
+      "deleteButton": "Delete"
+    },
+    "loadingMessage": "Loading products..."
+  },
+  "login": {
+    "welcome": "Welcome, {{name}}!",
+    "question": "Would you like to go to your dashboard or logout?",
+    "goToDashboard": "Go to Dashboard",
+    "logout": "Logout",
+    "title": "Login",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "loginWithEmailButton": "Login with Email",
+    "loginWithGoogleButton": "Login with Google",
+    "orText": "or",
+    "registerLink": "Register with email",
+    "errorMessage": "Error during login: {{message}}",
+    "errorMessageGoogle": "Error during Google login: {{message}}"
+  },
+  "register": {
+    "welcome": "Welcome, {{name}}!",
+    "alreadyRegistered": "You are already registered. You can go to your dashboard.",
+    "goToDashboard": "Go to Dashboard",
+    "title": "Register",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Password",
+    "registerButton": "Register",
+    "loginLink": "Already have an account? Login",
+    "errorMessage": "Error during registration: {{message}}"
+  }
+}

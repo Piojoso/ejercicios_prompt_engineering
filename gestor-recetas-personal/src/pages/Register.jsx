@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { registerUser } from '../utils/auth.js'; // Importar la función de registro
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext'; // Importar el contexto de autenticación
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
+  const { t } = useTranslation();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -34,15 +37,15 @@ const Register = () => {
         <div className="box" style={{ textAlign: 'center' }}>
           {currentUser ? (
             <div>
-              <h1 className="title">Welcome, {currentUser.displayName || currentUser.email}!</h1>
-              <p>You are already registered. You can go to your dashboard.</p>
+              <h1 className="title">{t('register.welcome', { name: currentUser.displayName || currentUser.email })}</h1>
+              <p>{t('register.alreadyRegistered')}</p>
               <Link to="/dashboard" className="button is-primary mt-5">
-                Go to Dashboard
+                {t('register.goToDashboard')}
               </Link>
             </div>
           ) : (
             <>
-              <h1 className="title">Register</h1>
+              <h1 className="title">{t('register.title')}</h1>
               <form onSubmit={handleRegister}>
                 <div className="field">
                   <div className="control">
@@ -51,7 +54,7 @@ const Register = () => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email"
+                      placeholder={t('register.emailPlaceholder')}
                       required
                     />
                   </div>
@@ -63,19 +66,19 @@ const Register = () => {
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
+                      placeholder={t('register.passwordPlaceholder')}
                       required
                     />
                   </div>
                 </div>
                 <button className="button is-primary" type="submit">
-                  Register
+                  {t('register.registerButton')}
                 </button>
               </form>
               <div className="my-4">
-                <Link to="/login">Already have an account? Login</Link>
+                <Link to="/login">{t('register.loginLink')}</Link>
               </div>
-              {error && <p className="has-text-danger">{error}</p>}
+              {error && <p className="has-text-danger">{t('register.errorMessage', { message: error })}</p>}
             </>
           )}
         </div>

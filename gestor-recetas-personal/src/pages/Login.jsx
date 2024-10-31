@@ -2,8 +2,11 @@ import { useState } from 'react';
 import { emailLogin, googleLogin, handleLogout } from '../utils/auth.js';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
+  const { t } = useTranslation();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -42,23 +45,21 @@ const Login = () => {
       <div className="container is-max-desktop">
         <div className="box" style={{ textAlign: 'center' }}>
           {currentUser ? (
-            // Si el usuario está logueado, mostrar el nombre y opciones
             <div>
-              <h1 className="title">Welcome, {currentUser.displayName || currentUser.email}!</h1>
-              <p>Would you like to go to your dashboard or logout?</p>
+              <h1 className="title">{t('login.welcome', { name: currentUser.displayName || currentUser.email })}</h1>
+              <p>{t('login.question')}</p>
               <div className="buttons is-flex is-justify-content-center mt-5">
                 <button className="button is-primary" onClick={() => navigate('/dashboard')}>
-                  Go to Dashboard
+                  {t('login.goToDashboard')}
                 </button>
                 <button className="button is-danger" onClick={handleLogout}>
-                  Logout
+                  {t('login.logout')}
                 </button>
               </div>
             </div>
           ) : (
-            // Si no está logueado, mostrar el formulario de login
             <>
-              <h1 className="title">Login</h1>
+              <h1 className="title">{t('login.title')}</h1>
               <form onSubmit={handleEmailLogin}>
                 <div className="field">
                   <div className="control">
@@ -67,7 +68,7 @@ const Login = () => {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email"
+                      placeholder={t('login.emailPlaceholder')}
                       required
                     />
                   </div>
@@ -79,23 +80,23 @@ const Login = () => {
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Password"
+                      placeholder={t('login.passwordPlaceholder')}
                       required
                     />
                   </div>
                 </div>
                 <button className="button is-primary" type="submit">
-                  Login with Email
+                  {t('login.loginWithEmailButton')}
                 </button>
               </form>
-              <div className="my-4">or</div>
+              <div className="my-4">{t('login.orText')}</div>
               <button className="button is-danger" onClick={handleGoogleLogin}>
-                Login with Google
+                {t('login.loginWithGoogleButton')}
               </button>
               <div className="my-4">
-                <Link to="/register">Register with email</Link>
+                <Link to="/register">{t('login.registerLink')}</Link>
               </div>
-              {error && <p className="has-text-danger">{error}</p>}
+              {error && <p className="has-text-danger">{t('login.errorMessage', { message: error })}</p>}
             </>
           )}
         </div>

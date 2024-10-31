@@ -10,6 +10,8 @@ import { ProductsCacheProvider } from './context/ProductsCacheContext';
 
 import Header from './components/Header/Header';
 
+import './i18n'; // Asegúrate de que se ejecute en la carga inicial
+
 const App = () => {
   const [theme, setTheme] = useState('light');
 
