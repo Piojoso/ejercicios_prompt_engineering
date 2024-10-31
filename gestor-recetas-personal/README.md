@@ -13,8 +13,12 @@ src/
 ├── context                       // Context
 │   ├── AuthContext.jsx           // Authentication context
 │   └── ProductsCacheContext.jsx  // Products cache context
+├── i18n.js                       // i18next configuration
 ├── icons                         // Icons
 │   └── Cookie.jsx                // A cookie icon
+├── locales
+│   ├── en.json                   // Translation file for English
+│   └── es.json                   // Translation file for Spanish
 ├── main.jsx                      // The main entry point for the application
 ├── pages                         // Pages
 │   ├── Dashboard.jsx             // The dashboard page
@@ -44,4 +48,4 @@ src/
 
 - **Se agrega un buscador de recetas en el Home.jsx:** [Chat](https://chatgpt.com/share/6723c3e7-46d8-8007-9023-51376f0fcc61)
 
-- **:** [Chat]()
+- **Se agrega internacionalización (English/Español):** [Chat](https://chatgpt.com/share/6723d2da-8da8-8007-a5e9-3f4f236cfab0)
